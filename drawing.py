@@ -2,6 +2,11 @@ import turtle as trtl
 
 painter = trtl.Turtle()
 painter.color("black")
+painter.sety(-500)
+painter.begin_fill()
+painter.circle(500)
+painter.end_fill()
+painter.sety(0)
 painter.fillcolor("yellow")
 #the head
 painter.penup()
@@ -31,6 +36,7 @@ painter.begin_fill()
 painter.circle(10)
 painter.end_fill()
 painter.pu()
+#Eyes
 painter.setx(-25)
 painter.sety(70)
 painter.pd()
@@ -43,7 +49,6 @@ painter.pd()
 painter.begin_fill()
 painter.circle(7)
 painter.end_fill()
-# Eyes
 painter.pu()
 painter.color("blue")
 painter.fillcolor("blue")
