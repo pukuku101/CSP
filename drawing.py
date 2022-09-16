@@ -66,4 +66,5 @@ painter.circle(2)
 painter.end_fill()
 #end of program
 wn = trtl.Screen()
+wn.bgcolor("black")
 wn.mainloop()
