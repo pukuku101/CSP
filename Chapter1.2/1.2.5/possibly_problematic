@@ -1,0 +1,83 @@
+import random as rand
+import turtle as trtl
+###------variable definitions-----###
+clickps=1
+global clicks
+clicks=0
+cpc=1
+cur="200.gif"
+font_setup=("Arial",20,"normal")
+item_list=[]
+item_price=[5,10,20,30]
+turtles_list=[]
+turnum=1
+ypos=200
+indnum=0
+###------Function Definitions-----###
+
+def cursor_clicked(x,y):
+    global clicks
+    clicks=clicks + cpc
+    score_change()
+
+def item_clicked(x,y):
+    global clicks, active_turtle
+    global price
+    global cpc
+    global turnum
+    if (clicks>=price):
+        config_turtles(x,y)
+        price2=round(price*9.2)
+        item_price.insert(turnum,price2)
+        clicks= clicks-price
+        cpc=cpc+1
+        price=item_price.pop(turnum)
+        score_change()
+def clicking(active_turtle):
+    item_clicked()
+    print_description(active_turtle)
+
+def set_up():
+    score_counter.hideturtle()
+    score_counter.pu()
+    score_counter.goto(-300,300)
+def score_change():
+    score_counter.clear()
+    score_counter.write("Clicks: " + str(clicks),font=font_setup)
+def print_description(active_turtle):
+    active_turtle.clear()
+    price=item_price.pop(indnum)
+    item_price.insert(indnum,price)
+    active_turtle.write("Cost: "+str(price),font=font_setup)
+def config_turtles(x,y):
+  if (x>=275 and x<=325 and y>=175 and y<=225):
+    global turnum
+    turnum=0
+    active_turtle=item
+###------Initializer--------###
+wn=trtl.Screen()
+wn.addshape(cur)
+wn.bgpic("giphy.gif")
+
+###-------Turtles--------###
+cursor=trtl.Turtle(shape=cur)
+
+score_counter=trtl.Turtle()
+set_up()
+score_counter
+for i in range (2):
+    item=trtl.Turtle(shape="square")
+    turtles_list.append(item)
+    item.pu()
+    item.goto(300,ypos)
+    ypos=ypos-100
+    print_description(item)
+    indnum=indnum+1
+
+
+###-------Shop--------###
+
+###-------Events------------_###
+cursor.onclick(cursor_clicked)
+item.onclick(clicking)
+wn.mainloop()
