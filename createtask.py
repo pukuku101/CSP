@@ -55,12 +55,8 @@ def funcclick(x,y):
         tempobj.pop(wcor)
         tempobj.insert(wcor,1)
         xrow.insert(lcor,tempobj)
-def saveclick(x,y):
-    f=open('H:\docs','w')
-    with open('readme.txt','w')as f:
-        f.write("Hello world")
 
-def delete():
+def deletefunc():
     lateststamp=len(stampids)
     cursor.clearstamp(stampids[lateststamp-1])
 
@@ -71,6 +67,6 @@ def delete():
 
 wn=turtle.Screen()
 wn.onclick(funcclick)
-wn.onkeypress(delete(),"z")
-wn.mainloop()
+wn.onkeypress(deletefunc, key="z")
 wn.listen()
+wn.mainloop()
